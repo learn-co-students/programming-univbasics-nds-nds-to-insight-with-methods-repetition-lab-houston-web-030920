@@ -45,7 +45,7 @@ end
 # ---------------------------------------------------------------
 
 def total_gross(source)
-  #return the total gross of all directors using list_of_directors and dire methods
+  #return the total gross of all directors using list_of_directors and directors_totals methods
   
   array_of_director_names = list_of_directors(source)
   result_hash = directors_totals(source)
