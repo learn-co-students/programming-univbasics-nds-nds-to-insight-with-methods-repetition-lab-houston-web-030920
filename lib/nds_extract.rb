@@ -12,6 +12,8 @@ def directors_totals(source)
   result
 end
 
+# ---------------------------------------------------------------
+
 def gross_for_director(d)
   total = 0
   index = 0
@@ -24,20 +26,45 @@ def gross_for_director(d)
   total
 end
 
+# ---------------------------------------------------------------
+
 def list_of_directors(source)
-  # Write this implementation
+  #extract names of directors from AoH
+  
+  director_index = 0 
+  director_names = []
+  while director_index < source.count do 
+    
+    director_names << source[director_index][:name]
+    
+    director_index += 1 
+  end 
+  director_names
 end
 
+# ---------------------------------------------------------------
+
 def total_gross(source)
-  # Write this implementation
-  #
-  # Should use methods:
-  # 1. directors_totals: returns a Hash of { dir_name => gross }
-  # 2. list_of_directors: names provides an Array of directors names (use
-  #
-  # Visit each key (i.e. director name), look up the value in the hash
-  # returned by directors_totals, and add it to a running total. When done,
-  # return the total
+  #return the total gross of all directors using list_of_directors and directors_totals methods
+  
+  array_of_director_names = list_of_directors(source)
+  result_hash = directors_totals(source)
+  
+  total = 0 
+  name_index = 0  
+  
+  
+  while name_index < array_of_director_names.count do 
+    
+    for key in result_hash.keys()
+      if array_of_director_names[name_index] == key 
+        total += result_hash[key]
+      end
+    end
+    name_index += 1 
+  end
+
+  total
 end
 
 
